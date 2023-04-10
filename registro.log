@@ -1,0 +1,17 @@
+DEBUG:asyncio:Using proactor: IocpProactor
+INFO:aiohttp.access:::1 [10/Apr/2023:10:41:57 +0000] "GET / HTTP/1.1" 200 3070 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+INFO:aiohttp.access:::1 [10/Apr/2023:10:42:06 +0000] "GET / HTTP/1.1" 200 3070 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+INFO:aiohttp.access:::1 [10/Apr/2023:10:42:11 +0000] "POST /async_usuarios HTTP/1.1" 404 172 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+DEBUG:asyncio:Using proactor: IocpProactor
+ERROR:aiohttp.server:Error handling request
+Traceback (most recent call last):
+  File "C:\Users\Álex\AppData\Local\Programs\Python\Python39\lib\site-packages\aiohttp\web_protocol.py", line 433, in _handle_request
+    resp = await request_handler(request)
+  File "C:\Users\Álex\AppData\Local\Programs\Python\Python39\lib\site-packages\aiohttp\web_app.py", line 504, in _handle
+    resp = await handler(request)
+  File "C:\Users\Álex\AppData\Local\Programs\Python\Python39\lib\site-packages\aiohttp\web_urldispatcher.py", line 195, in handler_wrapper
+    result = old_handler(request)
+  File "C:\Users\Álex\Desktop\Python con Don Víctor\Curso AIOHTTP\logs.py", line 13, in index
+    x = 2/0
+ZeroDivisionError: division by zero
+INFO:aiohttp.access:::1 [10/Apr/2023:10:43:44 +0000] "GET / HTTP/1.1" 500 334 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
