@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuarios</title>
+</head>
+<body>
+    
+    <form onsubmit="enviarFormulario(event)">
+        <div style="margin-bottom: .5rem;">
+            <label for="nombre">Nombre</label>
+        </div>
+        <div style="margin-bottom: .5rem;">
+            <input type="text" name="nombre" id="nombre">
+        </div>
+        <div style="margin-bottom: .5rem;">
+            <label for="apellido">Apellido</label>
+        </div>
+        <div style="margin-bottom: .5rem;">
+            <input type="text" name="apellido" id="apellido">
+        </div>
+        <div style="margin-bottom: .5rem;">
+            <label for="edad">Edad</label>
+        </div>
+        <div style="margin-bottom: .5rem;">
+            <input type="text" name="edad" id="edad">
+        </div>
+        <div style="margin-bottom: .5rem;">
+            <label for="email">Email</label>
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <input type="email" name="email" id="email">
+        </div>
+        <button type="submit" id="submit">Registrar</button>
+    </form>
+
+    <script>
+
+        var nombre = ""
+        var apellido = ""
+        var edad = ""
+        var email = ""
+
+        const obtenerNombre = () =>{
+            document.getElementById('nombre').addEventListener('change', (event) => {
+                nombre = event.target.value
+            })
+        }
+
+        const obtenerApellido = () =>{
+            document.getElementById('apellido').addEventListener('change', (event) => {
+                apellido = event.target.value
+            })
+        }
+
+        const obtenerEdad = () => {
+            document.getElementById('edad').addEventListener('change', (event) => {
+                edad = event.target.value
+            })
+        }
+
+        const obtenerEmail = () =>{
+            document.getElementById('email').addEventListener('change', (event) => {
+                email = event.target.value
+            })
+        }
+        
+        obtenerNombre();
+        obtenerApellido();
+        obtenerEdad();
+        obtenerEmail();
+
+        const enviarFormulario = async (event) => {
+            event.preventDefault();
+            const data = await fetch('http://localhost:8080/registrar', {
+                method: 'POST',
+                headers: {
+                    "Accept": 'application/json',
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    "nombre": nombre,
+                    "apellido": apellido,
+                    "edad": edad,
+                    "email": email,
+                })
+            })
+
+            const resp = await data.json()
+            console.log(resp)
+            // Limpiamos los inputs
+            document.getElementById('nombre').value = ""
+            document.getElementById('apellido').value = ""
+            document.getElementById('edad').value = ""
+            document.getElementById('email').value = ""
+        }
+
+    </script>
+
+</body>
+</html>
